@@ -1,13 +1,19 @@
 package com.cos.photogramstart.domain.user;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
+
+import com.cos.photogramstart.domain.image.Image;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,6 +49,14 @@ public class User {
 	
 	private String profileImageUrl;
 	private String role; //권한
+	
+	//나는 연관관계의 주인이 아니다. 컬럼 만들지마 , 
+	//유저 셀렉트 할떄 해당 유저 아이디로 등록된 이미지 가져와
+	//LAZY - 유저 셀렉트할때 해당 유저아이디로 등록된 이미지 가져오지마 - 대신 getImages() 함수가 호출될 때 가져왕
+	//EAGER - 유저 셀렉트할때 해당 유저아이디로 등록된 이미지들을 전부 조인해서 가져와
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY) 
+	@JsonIgnoreProperties({"user"}) //무한참조
+	private List<Image> images;
 	
 	private LocalDateTime createDate;
 	

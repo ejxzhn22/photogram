@@ -30,7 +30,7 @@ public class PrincipalDetails implements UserDetails{
 			
 			@Override
 			public String getAuthority() {
-				return user.getRole();
+				return "ROLE_"+user.getRole().toString();
 			}
 		});
 		
