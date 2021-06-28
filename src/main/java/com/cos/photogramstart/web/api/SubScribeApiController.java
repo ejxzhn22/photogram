@@ -22,6 +22,7 @@ public class SubScribeApiController {
 	
 	@PostMapping("/api/subscribe/{toUserId}")
 	public ResponseEntity<?> subscribe(@AuthenticationPrincipal PrincipalDetails principal, @PathVariable int toUserId) {
+		System.out.println("userid : " +toUserId);
 		subscribeService.구독하기(principal.getUser().getId(),toUserId);
 		return new ResponseEntity<>(new CMRespDto<>(1,"구독하기 성공",null),HttpStatus.OK);
 	}
@@ -29,6 +30,6 @@ public class SubScribeApiController {
 	@DeleteMapping("/api/subscribe/{toUserId}")
 	public ResponseEntity<?>unSubscribe(@AuthenticationPrincipal PrincipalDetails principal, @PathVariable int toUserId) {
 		subscribeService.구독취소하기(principal.getUser().getId(),toUserId);
-		return new ResponseEntity<>(new CMRespDto<>(1,"구독하기 성공",null),HttpStatus.OK);
+		return new ResponseEntity<>(new CMRespDto<>(1,"구독취소하기 성공",null),HttpStatus.OK);
 	}
 }
