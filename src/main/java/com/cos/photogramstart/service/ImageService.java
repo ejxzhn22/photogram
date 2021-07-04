@@ -25,6 +25,11 @@ public class ImageService {
 
 	private final ImageRepository imageRepository;
 	
+	@Transactional(readOnly = true)
+	public List<Image> 인기사진() {
+		return imageRepository.mPopular();
+	}
+	
 	@Transactional(readOnly = true) //영속성 컨텍스트 변경 감지를 해서 더티체킹 , flush(반영) x
 	public Page<Image> 이미지스토리(int principalId, Pageable pageable){
 		System.out.println("아이디 : "+principalId);
