@@ -38,6 +38,8 @@ public class UserService {
 		UUID uuid = UUID.randomUUID();
 		String imageFileName = uuid + "-" + profileImageFile.getOriginalFilename(); //1.jpg
 		
+		System.out.println("파일 이름: "+imageFileName);
+		
 		Path imageFilePath = Paths.get(uploadFolder+imageFileName);
 		
 		
@@ -49,7 +51,7 @@ public class UserService {
 		}
 		
 		User userEntity = userRepository.findById(principalId).orElseThrow(()->{
-			throw new CustomApiException("유저를 찾을 수 없습니다.");
+			return new CustomApiException("유저를 찾을 수 없습니다.");
 		});
 		
 		userEntity.setProfileImageUrl(imageFileName);

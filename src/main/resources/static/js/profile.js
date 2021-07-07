@@ -112,7 +112,7 @@ function profileImageUpload(pageUserId, principalId) {
 		}
 		
 		//서버에 이미지를 전송
-		let profileImageForm = $("#userProfileImageForm");
+		let profileImageForm = $("#userProfileImageForm")[0];
 		
 		//FormData 객체를 이용하면 form 태그와 필드와 그 값을 나타내는 일련의 key/value 씽을 담을 수 있다.
 		let formData = new FormData(profileImageForm);
