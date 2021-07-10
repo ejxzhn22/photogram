@@ -15,8 +15,9 @@
 <title>Photogram</title>
 
 	<!-- 제이쿼리 -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  
 	<!-- Style -->
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/story.css">
@@ -33,6 +34,9 @@
 </head>
 
 <body>
+
+	<!-- principalId 담아두는곳 -->
+	<input type="hidden" id ="principalId" value="${principal.user.id}"/>
 	
 	<header class="header">
 		<div class="container">
@@ -54,3 +58,5 @@
 			</nav>
 		</div>
 	</header>
+	
+	
